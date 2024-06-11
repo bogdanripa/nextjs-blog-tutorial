@@ -1,12 +1,20 @@
-export async function GET(request) {
-  let cnt = parseInt(request.url.replace(/^.*cnt=/, ''))
-  let body = 'DONE';
-  const nowInMs = Date.now();
-  if (cnt>0) {
-    cnt--;
-    //let response = await fetch(`http://localhost:3000/api/hello?cnt=${cnt}`);
-    let response = await fetch(`https://nextjs-blog-tutorial-cns6.vercel.app/api/hello1?cnt=${cnt}`);
-    body = await response.text();
+async function fetchData(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Network response was not ok ' + response.statusText);
   }
-  return new Response(`${cnt} - ${Date.now() - nowInMs}\n${body}`);
+  return response.text();
+}
+
+export async function GET(request) {
+  const nowInMs = Date.now();
+  const url = 'https://nextjs-blog-tutorial-cns6.vercel.app/api/hello1';
+  //const url = 'http://localhost:3000/api/hello1';
+  const promises = [];
+  for (let i = 0; i < 10; i++) {
+    promises.push(fetchData(url));
+  }
+  const results = await Promise.all(promises);
+  console.log('All responses:', results);
+  return new Response(`${Date.now() - nowInMs}\n`);
 }
