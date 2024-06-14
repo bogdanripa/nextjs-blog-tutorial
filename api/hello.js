@@ -21,5 +21,5 @@ export async function GET(request) {
   const fetchTimes = results.map(result => result.fetchTime);
   const responseTexts = results.map(result => result.text);
   console.log('All responses:', responseTexts);
-  return new Response(`{fetchTimes.join('\n')}\n`);
+  return new Response(`${fetchTimes.join('\n')}\n`);
 }
