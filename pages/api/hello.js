@@ -9,10 +9,9 @@ async function fetchData(url) {
   return { text, fetchTime };
 }
 
-export async function GET(request) {
+export default async function handler(req, res) {
   const nowInMs = Date.now();
-  const url = 'https://nextjs-blog-tutorial-cns6.vercel.app/api/hello1';
-  //const url = 'http://localhost:3000/api/hello1';
+  const url = 'https://nextjs-blog-tutorial-eznmeu.app.geneziodev.com/api/hello1';
   const promises = [];
   for (let i = 0; i < 10; i++) {
     promises.push(fetchData(url));
@@ -21,5 +20,5 @@ export async function GET(request) {
   const fetchTimes = results.map(result => result.fetchTime);
   const responseTexts = results.map(result => result.text);
   console.log('All responses:', responseTexts);
-  return new Response(`${fetchTimes.join('\n')}\n`);
+  res.status(200).send(`${fetchTimes.join('\n')}\n`);
 }

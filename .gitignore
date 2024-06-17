@@ -29,3 +29,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .vercel
+/.open-next
+open-next.config.ts
+package-lock.json
+package-lock.json
