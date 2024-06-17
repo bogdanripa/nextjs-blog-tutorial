@@ -12,7 +12,7 @@ async function fetchData(url) {
 export default async function handler(req, res) {
   const nowInMs = Date.now();
   //const url = 'https://nextjs-blog-tutorial-ten-bice.vercel.app/api/hello1';
-  const url = 'https://https://nextjsblog122.netlify.app/api/hello1';
+  const url = 'https://nextjsblog122.netlify.app/api/hello1';
   const promises = [];
   for (let i = 0; i < 10; i++) {
     promises.push(fetchData(url));
