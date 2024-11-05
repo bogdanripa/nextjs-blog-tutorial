@@ -5,16 +5,19 @@ import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
 import Link from 'next/link';
 
-
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
+  console.log('getServerSideProps was called');
   const allPostsData = getSortedPostsData();
+  // Fetch data or perform operations
   return {
     props: {
       allPostsData,
     },
   };
 }
+
 export default function Home({ allPostsData }) {
+  console.log('Home was called');
   return (
     <Layout home>
       <Head>

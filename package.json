@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@genezio/nextjs-isr-eu-central-1": "^1.0.6",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "next": "latest",

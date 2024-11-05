@@ -1,3 +1,8 @@
 name: nextjs-blog-tutorial
 region: eu-central-1
 yamlVersion: 2
+nextjs:
+  path: .
+  packageManager: npm
+  scripts:
+    deploy: npm install
